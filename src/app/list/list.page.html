@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Scroll test
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="grid">
+        <div class="box">
+          <virtual-scroller #scroll1 [items]="items" [bufferAmount]="5" [enableUnequalChildrenSizes]="false" [compareItems]="compareById">
+              <ion-card *ngFor="let value of scroll1.viewPortItems; trackBy: trackById; let i = index; even as even" class="ion-no-margin h50">
+                <ion-card-header>
+                  <ion-card-title>{{value.id}}</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+          </virtual-scroller>
+        </div>
+        <div class="box">
+          <cdk-virtual-scroll-viewport virtualScrollViewportResize [itemSize]="50">
+              <ion-card *cdkVirtualFor="let value of items; trackBy: trackById; let i = index; even as even" class="ion-no-margin h50">
+                <ion-card-header>
+                  <ion-card-title>{{value.id}}</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+          </cdk-virtual-scroll-viewport>
+        </div>
+        <div class="box">
+          <virtual-scroller #scroll2 [items]="items" [enableUnequalChildrenSizes]="true" [compareItems]="compareById">
+              <!--<ion-card *ngFor="let value of scroll2.viewPortItems; trackBy: trackById; let i = index; even as even" [ngClass]='{h50: !even, h100: even}' class="ion-no-margin">
+                <ion-card-header>
+                  <ion-card-title>{{value.id}}</ion-card-title>
+                </ion-card-header>
+              </ion-card> -->
+              <div *ngFor="let value of scroll2.viewPortItems; trackBy: trackById; let i = index; even as even" [ngClass]='{h50: !even, h100: even}' style="display:block; border: 1px solid red;">{{value?.id}}</div>
+          </virtual-scroller>
+        </div>
+        <div class="box">
+          <cdk-virtual-scroll-viewport fixedItemHeightsVirtualScrollStrategy virtualScrollViewportResize [itemHeights]="itemHeights">
+              <ion-card *cdkVirtualFor="let value of items; trackBy: trackById; let i = index; even as even" [ngClass]='{h50: !even, h100: even}' class="ion-no-margin">
+                <ion-card-header>
+                  <ion-card-title>{{value.id}}</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+          </cdk-virtual-scroll-viewport>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Form test
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form style="width: 400px; margin: auto;">
+        <ion-list>
+            <ion-item>
+                <ion-input
+                        [(ngModel)]="shortErrorText"
+                        errorText="Min. 8 characters"
+                        label="Short error-text"
+                        labelPlacement="stacked"
+                        mode="md"
+                        name="shortErrorText"
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+                        placeholder="Short error-text"
+                        required="true"
+                        type="text"/>
+                <ion-button
+                        aria-label="Show/hide"
+                        fill="clear"
+                        slot="end">
+                    <ion-icon
+                            aria-hidden="true"
+                            slot="icon-only"
+                            name="eye" />
+                </ion-button>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                        [(ngModel)]="longErrorText"
+                        errorText="Min. 8 characters with at least 1 uppercase, 1 lowercase and 1 number"
+                        label="Long error-text"
+                        labelPlacement="stacked"
+                        mode="md"
+                        name="longErrorText"
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+                        placeholder="Long error-text"
+                        required="true"
+                        type="text"/>
+                <ion-button
+                        aria-label="Show/hide"
+                        fill="clear"
+                        slot="end">
+                    <ion-icon
+                            aria-hidden="true"
+                            slot="icon-only"
+                            name="eye"/>
+                </ion-button>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
